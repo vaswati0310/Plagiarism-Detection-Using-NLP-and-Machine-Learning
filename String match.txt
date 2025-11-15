@@ -1,0 +1,15 @@
+Cut-Paste
+Input: "artificial intelligence is transforming industries by automating tasks and improving efficiency"
+Expected Match: "artificial intelligence is transforming industries by automating tasks and improving efficiency"
+
+Light Paraphrasing
+Input: "artificial intelligence is modifying industries by automating jobs and enhancing performance"
+Expected Match: "artificial intelligence is transforming industries by automating tasks and improving efficiency"
+
+Heavy Paraphrasing
+Input: "AI is revolutionizing sectors with automated systems and better productivity"
+Expected Match: "artificial intelligence is transforming industries by automating tasks and improving efficiency"
+
+No Match
+Input: "The quick brown fox jumps over the lazy dog"
+Expected Match : N/A

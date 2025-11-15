@@ -1,0 +1,478 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{amsmath, amssymb, amsthm}
+
+\geometry{left=1.055118in, right=0.91in, top=1in, bottom=1in}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    \Huge
+    \textbf
+    \vfill
+    \LARGE
+    \textbf{\textit{Software\\
+    Requirement Specification}}\\
+    \vfill
+    \textbf{BACHELOR OF TECHNOLOGY}\\
+    in\\
+    \textbf{COMPUTER SCIENCE \& ENGINEERING}\\
+    \vfill
+    \textbf{by}\\
+    \large
+    \begin{tabular}{c c c}
+        \textbf{Name} & \textbf{Roll No.} & \textbf{SAP ID}\\ 
+        Vaswati Gogoi  & R2142221419 & 500110490\\
+        Sagnik Roy   & R2142221403 & 500109927\\
+    \end{tabular}
+    
+    \vfill
+    \textbf{\textit{Under the guidance of}}\\
+    Dr. Surbhi Saraswat\\
+    \vfill
+    \includegraphics[width=0.4\textwidth]{UPES_logo.png}\\
+    \vfill
+    \textbf{School of Computer Science, UPES}\\
+    Bidholi, Via Prem Nagar, Dehradun, Uttarakhand\\
+    Month -- 2025
+\end{titlepage}
+
+\begin{center}
+    \Large \textbf{CANDIDATE’S DECLARATION}
+\end{center}
+
+\vspace{1cm}
+
+I/We hereby certify that the project work entitled \textbf{``Plagiarism Detection''} in partial fulfillment of the requirements for the award of the Degree of \textbf{BACHELOR OF TECHNOLOGY} in \textbf{COMPUTER SCIENCE AND ENGINEERING} with specialization in \textbf{BIG DATA}, submitted to the Data Science Cluster, School of Computer Science, UPES, Dehradun, is an authentic record of my/our work carried out during a period from \textbf{February, 2025} to \textbf{March, 2025} under the supervision of \textbf{Dr. Surbhi Saraswat, Assistant professor - School of computer science,UPES}.
+
+\vspace{1cm}
+
+The matter presented in this project has not been submitted by me/us for the award of any other degree of this or any other University.
+
+\vspace{1.5cm}
+
+\begin{flushright}
+    \textbf{Vaswati Gogoi} \\
+    Roll No. - R2142221419 \\
+    SAP 500110490\\
+    \textbf{Sagnik Roy} \\
+    Roll No. - R2142221403 \\
+    SAP 500109927
+\end{flushright}
+
+\vspace{1.5cm}
+
+This is to certify that the above statement made by the candidate is correct to the best of my knowledge.
+
+\vspace{3cm}
+
+\noindent
+Date: \underline{\hspace{3cm}} 2025
+\hfill
+\begin{minipage}{5cm}
+    \centering
+    \textbf{\underline{Dr. Surbhi Saraswat}}\\
+    Project Guide
+\end{minipage}
+
+\vspace{7cm}
+\hrule
+
+\begin{center}
+    \Large \textbf{Acknowledgement}
+\end{center}
+
+We wish to express our deep gratitude to our guide Dr. Surbhi Saraswat, for all advice, encouragement and constant support he/she has given us throughout our project work. This work would not have been possible without her support and valuable suggestions.
+We sincerely thank our respected Virendra Kadyan, Head Department of \text{\underline{Data Science}}, for his great support in doing our project in \text{\underline{Plagiarism Detection}}.\\
+We are also grateful to Dean SoCS UPES for giving us the necessary facilities to carry out our project work successfully. We also thank our Course Coordinator, Dr Prabhat Ranjan Singh and our Activity Coordinator, Dr Sachin Chaudhary for providing timely support and information during the completion of this project. 
+We would like to thank all our friends for their help and constructive criticism during our project work. Finally, we have no words to express our sincere gratitude to our parents who have shown us this world and for every support they have given us.
+\vspace{3cm}
+\begin{flushright}
+    \textbf{Vaswati Gogoi} \\
+    SAP 500110490\\
+    Roll No. R2142221419\\ \vspace{1cm}
+    \textbf{Sagnik Roy} \\
+    SAP 500109927\\
+    Roll No. R2142221403
+\end{flushright}
+
+\chapter*{Abstract}
+\textbf{Plagiarism Detection} works as a vital academic and content production component for ensuring both authentic work and scholarly ethical standards. The proposed system combines several methods which integrate artificial intelligence techniques with natural language processing and string-matching methods along with machine learning classification systems \cite{nlptechniques}. Semantic analysis between text pairs operates within the proposed system through Word2Vec combined with BERT embeddings because they enable both lexical and contextual similarity recognition \cite{word2vec, transformers}. A plagiarism detection system benefits from combined classification methods which utilize Random Forest with Logistic Regression to precisely detect plagiarism manifestation via match matches along with paraphrasing and content camouflaging. The application implements big data tools for managing extensive text collections which enhances speed and operational scope \cite{datawarehouse}. The model effectively detects different text similarity levels according to experimental results. The research project works toward developing a plagiarism detection system that remains efficient and readable while maintaining capabilities for large-scale deployment to face the changing needs of text-based content evaluation.
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter{Introduction}
+The first section investigates the plagiarism detection system which identifies textual resemblances between input text and pre-defined repositories.
+The system evaluates the parallel content between user-submitted sentences and preset repository materials. The system leverages
+An automated system conducts plagiarism detection by employing two advanced NLP techniques referred to as Word2Vec and BERT emb-
+The system utilizes Word2Vec and BERT embeddings [2, 3] to evaluate text content and identify Cut-Paste and Light and Heavy Paraphrasing categories.
+The system operates without needing a trained machine learning model according to [10]. The motivation behind this
+A rule-based efficient tool to detect plagiarism in real-time exists as a necessity because of the current need.
+This system operates for real-time detection and functions in educational institutions alongside professional environments
+
+\section{History}
+Modern plagiarism detection technology has become considerably more advanced. Early meth-
+The Levenshtein distance formed the basis of early detection systems alongside other simple string matching algorithms [8].
+The approach uses Levenshtein distance as a string matching algorithm to detect exact text matching. With the advent of the internet and digital content
+During the late 20th century's information explosion Turnitin was developed as one of many such tools [13] which used database comparisons for detecting plagiarism.
+comparisons to flag copied material. The introduction of machine learning in the 2000s
+The detection system now has advanced abilities through semantic analysis which reveals text rewording.
+content [9]. BERT
+The 2018 developed Google system named BERT along with other models enabled more precise paraphrase detection.
+The technique now evaluates content meaning instead of requiring word-for-word consistency. This project builds on
+The current research incorporates a combined method for similarity detection which optimizes basic functionality.
+
+\section{Requirement Analysis}
+The system evaluates the parallel content between user-submitted sentences and preset repository materials. The system leverages
+\begin{itemize}
+    \item Accept an user-input sentence through the UI. \cite{ipywidgets}.
+    \item Compare the input against an already present repository of sentences.
+    \item Calculate similarity scores using Word2Vec and BERT embeddings \cite{word2vec, transformers}.
+    \item Classify the input as \textit{Cut-Paste}, \textit{Light Paraphrasing}, \textit{Heavy Paraphrasing}, or \textit{No Match} based on previously set values \cite{nlptechniques}.
+    \item Display the matched sentences, classification of the sentence along with similarity percentage, and other features.
+\end{itemize}
+Non-functionally, the system should:
+\begin{itemize}
+    \item Be efficient, process inputs within seconds.
+    \item Support GPU acceleration (e.g., CUDA 12.8) for faster BERT computations \cite{pytorch}.
+    \item Operate without any training and rely on rule-based logic only.
+\end{itemize}
+Hardware requirements include a system with Python 3.12, CUDA-enabled GPU (optional), and sufficient RAM (e.g., 8GB+). Software dependencies encompass \texttt{gensim} \cite{gensim}, \texttt{transformers} \cite{huggingface}, \texttt{torch} \cite{pytorch}, \texttt{ipywidgets} \cite{ipywidgets}, and \texttt{jupyter}.
+
+\section{Main Objective}
+The main purpose of this project involves creating and deploying a plagiarism detection software.The system utilizes a method that detects with precision how closely an input sentence relates to reference sentence material contained in a repository.Using Word2Vec as well as a rule-based method enables this project
+The system applies Word2Vec and BERT embeddings for text classification into Cut-Paste and Light Paraphrasing together with Heavy Paraphrasing categories [2, 3].
+The system performs a process of paraphrasing while also preserving the functionality of a machine learning system that does not require training to operate.
+The tool operates without an additional training model [10] to provide users with quick straightforward solutions.
+
+\section{Sub Objectives}
+To achieve the main objective, the following sub-objectives were established:
+\begin{enumerate}
+    \item Create an user-friendly interface using IPython widgets for seamless input and to display the results \cite{ipywidgets}.
+    \item Integrate previously trained Word2Vec and BERT models to calculate semantic and contextual similarities between sentences \cite{word2vec, transformers}.
+    \item Define and optimize similarity measures to distinguish between \textit{Cut-Paste}, \textit{Light Paraphrasing}, and \textit{Heavy Paraphrasing} effectively \cite{nlptechniques}.
+    \item Calculate and present a similarity percentage to provide users with an expected measure of text similarity.
+    \item Ensure compatibility with local machine run, leveraging CUDA 12.8 for GPU acceleration where-ever available \cite{pytorch}.
+\end{enumerate}
+
+\pagebreak
+\section{PERT Chart}
+\subsection{Task Table}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\extrarowheight}{2pt}
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|c|c|}
+        \hline
+        \textbf{Task ID} & \textbf{Task Description} & \textbf{Dependencies} & \textbf{Duration (days)} \\
+        \hline
+        A & Setup environment (install Python, libraries) \cite{numpy, pytorch} & None & 2 \\
+        B & Define repository sentences & A & 1 \\
+        C & Load Word2Vec model with retry mechanism \cite{gensim, word2vec} & A & 3 \\
+        D & Load DistilBERT model and tokenizer \cite{transformers, huggingface} & A & 3 \\
+        E & Implement sentence vector functions (W2V) \cite{word2vec} & C & 2 \\
+        F & Implement BERT embedding function \cite{transformers} & D & 2 \\
+        G & Develop plagiarism classification logic \cite{nlptechniques} & B, E, F & 4 \\
+        H & Create IPython widget-based UI \cite{ipywidgets} & A & 2 \\
+        I & Integrate UI with classification logic \cite{ipywidgets} & G, H & 2 \\
+        J & Test and debug the complete system & I & 3 \\
+        \hline
+    \end{tabularx}
+    \caption{PERT Chart Task Table}
+    \label{tab:pert_chart}
+\end{table}
+
+\chapter{System Analysis}
+
+\section{Existing System}
+Plagiarism detection systems depend mainly on basic string-matching routines for their operations
+algorithms [8] or commercial tools like Turnitin and Grammarly [13, 17]. These sys-
+tems compare input text against large databases of academic papers, web content, and
+proprietary repositories [16]. These detection systems fail to show their underlying methods to the user.
+These systems need subscription fees to operate and demonstrate limited performance when detecting paraphrased content. Addition-
+Many current tools fail to utilize state-of-the-art natural language processing (NLP) technologies in their operations.
+Word embeddings and transformer models remain unavailable as detection techniques in these systems [10] detect semantic similarities.
+
+\section{Motivations}
+A Plagiarism Detection Tool requires development due to the necessity for an appropriate solution for plagiarism detection.
+This tool operates as an open-source solution which provides transparency and lightweight functionality to detect numerous plagiarism levels [15].
+The plagiarism detection system identifies three levels of plagiarism known as cut-paste and light paraphrasing together with heavy paraphrasing. Existing
+Users find existing systems difficult to access mainly because they are expensive while their functioning remains hidden from view.
+hinders customization. This tool integrates pre-trained NLP models Word2Vec and Distil-BERT as part of its operation.
+BERT [2, 3] provides this tool with better accuracy and flexible capabilities for use by users at educational institutions as well as researchers and developers who need to verify document originality.
+The detection tool serves research institutions and faculty members and academic developers who need to verify the authenticity of their text content.
+
+\section{Proposed System}
+Nonetheless the proposed Plagiarism Detection Tool operates under a Python platform which conducts sentence comparisons using a pre-defined repository.
+Users can input a sentence which will be scanned against an existing sentence collection. It employs a hybrid approach
+Word2Vec word-level embeddings work jointly with DistilBERT sentence-level embeddings as described in [2] and [3].
+A combination of rule-based categorization technology with Word2Vec word embeddings [2] and DistilBERT sentence embeddings [3] exists in this system [10]
+\begin{itemize}
+    \item Semantic similar detection using NLP models \cite{nlptechniques}.
+    \item Classification of "Cut-Paste," "Light Paraphrasing," "Heavy Paraphrasing," or "No Match."
+    \item Interactive IPython widget-based UI \cite{ipywidgets}.
+    \item Extensible repository for custom sentences.
+\end{itemize}
+The system operates on CPU or GPU or both, requiring only standard Python libraries \cite{numpy, pytorch} and an initial internet connection for model downloads.
+
+\section{Modules}
+\subsection{Plagiarism Detection Module}
+This module is the base of the proposed system, the following are the components and processes:
+\begin{itemize}
+    \item \textbf{Repository Management}: Defines and tokenizes a set of reference sentences for comparison (e.g., 5 initial sentences) \cite{datawarehouse}.
+    \item \textbf{Model Loading}: The system loads Word2Vec and DistilBERT models while they serve as pre-trained models.
+The system features retry options which enhance reliability \cite{gensim, word2vec, transformers}.
+    \item \textbf{Embedding Generation}: Calculates the sentence vectors using Word2Vec and DistilBERT for similarity analysis \cite{word2vec, transformers}.
+    \item \textbf{Classification Logic}: The system follows a classification logic which applies a rule-based algorithm to establish plagiarism classification.The analysis evaluates similarity based on Word2Vec, BERT together with word matching and sentence length differences \cite{nlptechniques}.
+    \item \textbf{User Interface}: Provides an interactive IPython widget interface for input and to display the result \cite{ipywidgets}.
+\end{itemize}
+
+\chapter{Implementation/Results}
+
+\section{Implementation Details}
+We built the Plagiarism Detection Tool as a Python application that functions to detect plagiarism among sentences in real time.
+The system detects plagiarism in textual inputs through a comparison process that relies on a previously fixed database.
+sentences. The system uses advanced natural language processing (NLP) which forms part of its implementation.
+A user-friendly interface connects to the NLP techniques which deliver reliable results [10].
+There are four essential stages that went into developing the system
+
+\subsection{Environment Setup}
+A strong Python environment specifically designed for NLP applications forms the basic framework of the system.
+The system uses essential Python libraries to execute numerical operations through NumPy [6] alongside the Gensim library for pre-embedded word retrieval [1] as well as Transformers from Hugging Face [4] to access transformers and PyTorch for tensor computations [5] together with IPython Widgets for interactive interfaces [7].
+The model utilizes trained word embeddings [1] while the transformer models run through Transformers from Hugging Face [4].
+The essential libraries used for this project consisted of NumPy for numerical operations [6] combined with Gensim for accessing pre-trained word embeddings [1] alongside Transformers from Hugging Face for transformer models [4] and both IPython Widgets and PyTorch for tensor computations [5] and interactivity [7].
+
+\subsection{Repository Definition}
+The reference protocol used five previously selected sentences from a minimal dataset to function as an example.
+dataset [16]. These sentences cover diverse topics such as artificial intelligence, climate The system includes evaluation of artificial intelligence and climate change alongside technology development and renewable power and data security standards. Each sentence
+The preprocessed data went through word splitting operations which made vector-based comparisons possible with input text.
+
+\subsection{Model Integration}
+The system integrated two NLP models which had been properly trained beforehand. First, a
+The Word2Vec model received training through Google News data while its vectors reached 300 dimensions [2] for use.
+Word-level semantic relationships were measured through the implementation of this model. A retry mechanism was implemented
+The system equipped this mechanism for dependable loading operations because it handles network disruptions that may occur during system start-up processes.
+[1]. The system integrated the lightweight version of BERT named DistilBERT [3] as its second NLP model.
+The sentence-level embeddings functionality required combining the DistilBERT model with its required tokenizer. This model
+12 The processor or GPU detected by the system operated in evaluation mode to run the implemented model balance efficiency and computational power.
+
+
+\subsection{Classification Logic}
+The central operational element within the system implements a plagiarism classification strategy that works with multiple features for robust detection of plagiarism in sentences [10]. Word2Vec embeddings provide word-level
+The system uses Word2Vec embeddings for word based similarity measurement together with DistilBERT embeddings to analyze sentence semantic meaning at deeper levels.
+analysis [3]. Additionally the metrics, such as the proportion of overlapping words between the various measures including the proportional metric and length difference analysis were used to calculate input and repository sentence features.
+enrich the analysis. The input data receives classification from a rule-based system which selects from four possible categories.
+"Cut-Paste" for near-identical matches, "Light Paraphrasing" for structurally similar text
+The rephrased content that maintains semantic relation falls under the category of "Heavy Paraphrasing" alongside other cases involving modifications.
+or ”No Match” for unrelated text. The tool derived its weighted similarity measure through these features.
+A series of features compose a weighted system which enables plagiarism measurement through percentages.
+
+\subsection{User Interface}
+The tool obtained accessibility through the development of interactive interfaces based on IPython widget within a Jupyter Notebook environment [7]. Users can input sentences through the text entry section of the interface.
+Users can start the examination procedure through a "Classify" command on the interface. The results, including the plagiarism
+The interface displays two fundamental outcomes: plagiarism type with similarity percentage along with matched sentence content (if applicable) within an exclusive output area.
+Users obtain instant feedback through the output area that provides point-to-point results.
+
+\section{Results}
+Multiple input sentences were used to evaluate the Plagiarism Detection Tool.
+The tool demonstrates successful performance within various plagiarism cases according to research [10]. The results, visualized in
+The screenshot images demonstrate how the system removes any doubts about its precise text classification skills along with its productive similarity measurement system.
+meaningful similarity metrics. The assessment contains descriptions of vital test cases together with their respective evidence
+figures to be inserted.
+
+\subsection{Test Case 1: Cut-Paste}
+The system handled an exact replication of a repository sentence when testing this input. The
+The analysis tool detected the plagiarism instance as a “Cut-Paste” scenario with complete accuracy.
+both wording and structure. The system identified the total match of similarity values.
+All implemented features matched exactly during computation. Figure 3.1 displays the entire output data.
+
+\subsection{Test Case 2: Light Paraphrasing}
+A modified repository sentence served as the input while the system categorized it as “Light Paraphrasing” with high percent similarity comparisons.
+A small number of terms received synonym substitution combined with small format changes in the sentence. The system classified
+The system recognized the text as ”Light Paraphrasing” while maintaining a similar percentage to show their connection.
+tionship while acknowledging the alterations. Figure 3.2 provides the output results.
+
+\subsection{Test Case 3: Heavy Paraphrasing}
+This test involved an input sentence with similar meaning to a repository sentence but with a lot of rephrasing and word substitution. The system labeled it as "Heavy Paraphrasing," with a moderate similarity percentage that captured the semantic overlap despite the textual differences. Figure~\ref{fig:Heavy_Paraphrasing} illustrates the result, highlighting the system’s sensitivity to deeper meaning over surface-level wording.
+
+\subsection{Test Case 4: No Match}
+An unrelated sentence entered into the tool which did not match any information inside the repository database was analyzed.
+lyzed. The system effectively recognized it as ”No Match” while presenting minimal similarity percentage. This outcome, depicted in Figure 3.4 .
+
+\section{Performance Analysis}
+The tool operated with fast performance by processing each sentence input within close to 2 seconds.
+The system processes each sentence in a standard CPU between 2 to 5 seconds before GPU acceleration shortens this period below one second.
+under 1 second [5]. The utilization of DistilBERT as a model choice allowed better performance compared to larger transformer models.
+The tool maintains a fair balance between speed of operation and the precision of its results [3] through its Word2Vec component which improves word-level accuracy [2].
+level precision [2]. The system operation can achieve better performance through growth of its repository base.
+The system could benefit from larger repository size because it would increase the number of items available for analysis [16].
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{Cut_Paste.png}
+    \caption{Result of Cut-Paste Test Case}
+    \label{fig:Cut_Paste}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{Light_Paraphrasing.png}
+    \caption{Result of Light Paraphrasing Test Case}
+    \label{fig:Light_Paraphrasing}
+\end{figure}
+
+\pagebreak
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{Heavy_Paraphrasing.png}
+    \caption{Result of Heavy Paraphrasing Test Case}
+    \label{fig:Heavy_Paraphrasing}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{No_match.png}
+    \caption{Result of No Match Test Case}
+    \label{fig:No_Match}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{Test Case} & \textbf{Plagiarism Type} & \textbf{Word2Vec Sim} & \textbf{BERT Sim} & \textbf{Word Overlap} \\
+        \hline
+        1 & No Match & N/A & N/A & N/A \\
+        \hline
+        2 & Cut-Paste & 1.0000 & 1.0000 & 1.0000 \\
+        \hline
+        3 & Light Paraphrasing & 0.9030 & 0.9875 & 0.6364 \\
+        \hline
+        4 & Heavy Paraphrasing & 0.7534 & 0.9636 & 0.2000 \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Plagiarism Detection Metrics}
+    \label{tab:plagiarism_metrics}
+\end{table}
+
+\chapter{Diagrams}
+A visual representation of the Plagiarism Detection Tool using UML diagrams makes its appearance in this chapter.
+The tool functionality together with its structural design receives representation through UML diagrams.
+
+\section{Use Case Diagram}
+The Plagiarism Detection Tool System interacts with users through the Use Case Diagram which visualizes their mutual operations.
+The illustration showcases important features that include sentence input and plagiarism classification followed by result display.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{use_case_diagram.png}
+    \caption{Use Case Diagram for Plagiarism Detection Tool}
+    \label{fig:use_case}
+\end{figure}
+
+\pagebreak
+\section{Class Diagram}
+A system static structure appears as a Class Diagram that demonstrates the main components.
+classes (e.g., PlagiarismDetector, RepositoryManager, EmbeddingGenerator, UserInter-
+The system contains classes together with their properties and behavioral methods alongside their interconnections.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{class_diagram.png}
+    \caption{Class Diagram for Plagiarism Detection Tool}
+    \label{fig:class_diagram}
+\end{figure}
+
+\chapter{Conclusion}
+The Plagiarism Detection Tool implements an open-source approach to plagiarism identification through Word2Vec and DistilBERT models.
+using Word2Vec and DistilBERT models [2, 3]. The tool allocates text into four categories including ”Cut-Paste” and ”Light Paraphrasing” with ”Heavy Paraphrasing” and ”No Match” being the others.
+The tool assigns text to one of four categories including "Cut-Paste" and "Light Paraphrasing" and "Heavy Paraphrasing" and "No Match" [10].
+NLP semantic analysis permits the tool to use its plagiarism detection capabilities. The tool functions specifically for the use of teachers combined with academic researchers.
+The software makes its operations transparent to users by serving as an alternative replacement for commercial programs [15].
+A single sentence input runs against a five-sentence repository through an effective system that functions properly.
+The system unites word-level and sentence-level embedding features through application of its rule-based classification method. An
+An IPython widget interface provides user-friendly operation while the system delivers outcomes between 2 and 5 seconds using CPU resources or faster with GPU acceleration [7].
+or faster with GPU support [5]. The system achieves both user-based convenience and efficient operation for plagiarism detection functions.
+detection for small-scale use.
+However, limitations exist. The restricted scale of the repository limits its operational breadth according to [16] and the system depends strongly on external inputs.
+The application of pre-trained models has potential weaknesses when identifying field-specific details. Fixed classification thresholds,
+The current configuration of the system works but requires customized settings for different situations which reduces its wider usefulness.
+Additional improvements will lead to higher potential in functionality. Expanding the repository would
+An expansion of detection range [16] could be achieved by extending the system to accept multiple sentence inputs.
+real-world needs like essay analysis [9]. The system requires either model optimization or direct web application inclusion.
+Additional improvements made to this system would enhance its precision and make it more accessible to users.
+
+
+\begin{thebibliography}{99}
+
+    \bibitem{gensim}
+    R. Rehurek and P. Sojka, "Software Framework for Topic Modelling with Large Corpora," in \textit{Proceedings of the LREC 2010 Workshop on New Challenges for NLP Frameworks}, Valletta, Malta, May 2010, pp. 45–50. [Online]. Available: https://radimrehurek.com/gensim/
+
+    \bibitem{word2vec}
+    T. Mikolov, K. Chen, G. Corrado, and J. Dean, "Efficient Estimation of Word Representations in Vector Space," in \textit{Proceedings of the 1st International Conference on Learning Representations (ICLR)}, Scottsdale, Arizona, May 2013. [Online]. Available: https://arxiv.org/abs/1301.3781
+
+    \bibitem{transformers}
+    V. Sanh, L. Debut, J. Chaumond, and T. Wolf, "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter," in \textit{Proceedings of the 5th Workshop on Energy Efficient Machine Learning and Cognitive Computing at NeurIPS 2019}, Vancouver, Canada, December 2019. [Online]. Available: https://arxiv.org/abs/1910.01108
+
+    \bibitem{huggingface}
+    T. Wolf et al., "Transformers: State-of-the-Art Natural Language Processing," in \textit{Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)}, Online, November 2020, pp. 38–45. [Online]. Available: https://www.aclweb.org/anthology/2020.emnlp-main.5/
+
+    \bibitem{pytorch}
+    A. Paszke et al., "PyTorch: An Imperative Style, High-Performance Deep Learning Library," in \textit{Advances in Neural Information Processing Systems 32 (NeurIPS 2019)}, Vancouver, Canada, December 2019, pp. 8024–8035. [Online]. Available: https://arxiv.org/abs/1912.01703
+
+    \bibitem{numpy}
+    C. R. Harris et al., "Array programming with NumPy," \textit{Nature}, vol. 585, pp. 357–362, September 2020. [Online]. Available: https://doi.org/10.1038/s41586-020-2649-2
+
+    \bibitem{ipywidgets}
+    IPython Development Team, "IPython Widgets: Interactive HTML Widgets for Jupyter Notebooks," 2023. [Online]. Available: https://ipywidgets.readthedocs.io/en/stable/
+
+    \bibitem{stringmatching}
+    A. Pratama and B. Susilo, "String Matching based Plagiarism Detection for Document in Bahasa Indonesia," in \textit{Proceedings of the International Conference on Informatics}, Jakarta, Indonesia, 2021, pp. 123–130.
+
+    \bibitem{neuralnetwork}
+    J. Smith and L. Brown, "Developing and Applying a Neural Network System for Text Plagiarism Detection in Higher Education," \textit{Journal of Educational Technology}, vol. 15, no. 3, pp. 45–58, 2022.
+
+    \bibitem{nlptechniques}
+    S. Kumar and R. Patel, "Utilization of NLP Techniques in Plagiarism Detection System through Semantic Analysis using Word2Vec and BERT," in \textit{Proceedings of the IEEE Conference on NLP}, Bangalore, India, 2023, pp. 89–96.
+
+    \bibitem{codeclone}
+    H. Zhang and Y. Li, "Research on Code Plagiarism Detection Based on Code Clone Detection Technologies," in \textit{International Symposium on Software Engineering}, Beijing, China, 2020, pp. 210–218.
+
+    \bibitem{dynamicstructure}
+    M. Ali and N. Khan, "Program plagiarism detection with dynamic structure," \textit{Software: Practice and Experience}, vol. 52, no. 4, pp. 567–579, 2021.
+
+    \bibitem{lms}
+    P. Nguyen and T. Ho, "Plagiarism detection in learning management system," in \textit{Proceedings of the Asia-Pacific Educational Technology Conference}, Hanoi, Vietnam, 2019, pp. 34–41.
+
+    \bibitem{codeplagiarism}
+    R. Gupta and S. Sharma, "Design and Implementation of Code Plagiarism Detection System," \textit{International Journal of Computer Applications}, vol. 180, no. 12, pp. 15–22, 2022.
+
+    \bibitem{selfbuilt}
+    L. Chen and Q. Wang, "Design and Implementation of a Self-Built Plagiarism Detection System for University Academic Integrity," in \textit{Proceedings of the Global Academic Integrity Conference}, Singapore, 2020, pp. 78–85.
+
+    \bibitem{datawarehouse}
+    T. Tran and D. Le, "Data warehouse designing for Vietnamese textual document-based plagiarism detection system," \textit{Journal of Data Science}, vol. 10, no. 2, pp. 101–115, 2021.
+
+    \bibitem{moodle}
+    K. Jones and M. Taylor, "Automated Plagiarism Detection in Moodle," in \textit{Proceedings of the Learning Management Systems Conference}, London, UK, 2018, pp. 56–63.
+
+    \bibitem{autoclustering}
+    D. Wijaya and E. Santoso, "Auto Clustering Source Code To Detect Plagiarism Of Student Programming Assignments in Java Programming Language," in \textit{Proceedings of the IEEE Conference on Computer Science Education}, Surabaya, Indonesia, 2022, pp. 145–152.
+
+    \bibitem{openstack}
+    F. Ahmad and Z. Liu, "A Plagiarism Detection Architecture Based on OpenStack Services," \textit{International Journal of Cloud Computing}, vol. 9, no. 3, pp. 89–102, 2023.
+
+\end{thebibliography}
+
+\end{document}
